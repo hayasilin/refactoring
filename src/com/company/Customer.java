@@ -29,7 +29,7 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement(); // 取得一筆租借紀錄
 
-            thisAmount = amountFor(each);
+            thisAmount = each.getCharge();
 
             // Add frequent renter points 累加常客積點
             frequentRenterPoints++;
@@ -47,9 +47,5 @@ public class Customer {
         result += "Ammount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
         return result;
-    }
-
-    private double amountFor(Rental aRental) {
-        return aRental.getCharge();
     }
 }
