@@ -49,32 +49,32 @@ public class Customer {
         return result;
     }
 
-    private double amountFor(Rental each) {
-        double thisAmount = 0;
+    private double amountFor(Rental aRental) {
+        double result = 0;
 
         // Determine amounts for each line
-        switch (each.getMovie().getPriceCode()) { // 取得影片出租價格
+        switch (aRental.getMovie().getPriceCode()) { // 取得影片出租價格
             case Movie.REGULAR:
-                thisAmount += 2;
-                if (each.getDaysRented() > 2) {
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                result += 2;
+                if (aRental.getDaysRented() > 2) {
+                    result += (aRental.getDaysRented() - 2) * 1.5;
                 }
                 break;
 
             case Movie.NEW_RELEASE:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3) {
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                result += 1.5;
+                if (aRental.getDaysRented() > 3) {
+                    result += (aRental.getDaysRented() - 3) * 1.5;
                 }
                 break;
 
             case Movie.CHILDREN:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3) {
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                result += 1.5;
+                if (aRental.getDaysRented() > 3) {
+                    result += (aRental.getDaysRented() - 3) * 1.5;
                 }
                 break;
         }
-        return thisAmount;
+        return result;
     }
 }
