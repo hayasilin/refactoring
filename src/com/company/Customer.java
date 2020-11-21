@@ -28,12 +28,7 @@ public class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement(); // 取得一筆租借紀錄
 
-            // Add frequent renter points 累加常客積點
-            frequentRenterPoints++;
-            // Add onus for a two day new release rental
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1)) {
-                frequentRenterPoints++;
-            }
+            frequentRenterPoints = each.getFrequentRenterPoints();
 
             // Show figures for this rental 顯示此筆租借資料
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
