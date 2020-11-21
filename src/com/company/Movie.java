@@ -10,7 +10,7 @@ public class Movie {
 
     public Movie(String title, int priceCode) {
         _title = title;
-        _priceCode = priceCode;
+        setPriceCode(priceCode);
     }
 
     public int getPriceCode() {
@@ -52,5 +52,13 @@ public class Movie {
                 break;
         }
         return result;
+    }
+
+    public int getFrequentRenterPoints(int daysRented) {
+        if ((getPriceCode() == Movie.NEW_RELEASE && daysRented > 1)) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
 }
