@@ -20,14 +20,11 @@ public class Customer {
     }
 
     public String statement() {
-        int frequentRenterPoints = 0; // 常客積點
         Enumeration rentals = _rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement(); // 取得一筆租借紀錄
-
-            frequentRenterPoints = each.getFrequentRenterPoints();
 
             // Show figures for this rental 顯示此筆租借資料
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
@@ -35,7 +32,7 @@ public class Customer {
 
         // Add footer lines
         result += "Ammount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
         return result;
     }
 
@@ -45,6 +42,16 @@ public class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement(); // 取得一筆租借紀錄
             result += each.getCharge();
+        }
+        return result;
+    }
+
+    private int getTotalFrequentRenterPoints() {
+        int result = 0;
+        Enumeration rentals = _rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement(); // 取得一筆租借紀錄
+            result += each.getFrequentRenterPoints();
         }
         return result;
     }
